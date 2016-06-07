@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="App">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toshl Killer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="app/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-inverse m-b">
+      <a class="navbar-brand" href="#">Toshl Killer</a>
+      <center>
+        <button ng-click="getDataPreviousPeriod()" type="button" class="btn btn-sm header-buttons"> < </button>
+        <strong>{{selectedPeriod | date: 'MMMM yyyy'}}</strong>
+        <button ng-click="getDataNextPeriod()" type="button" class="btn btn-sm header-buttons"> > </button>
+      </center>
+    </nav>
+    
+    
+    <div class="container.fluid">
+      
+      <!-- SIDEBAR -->
+      <div class="col-sm-3 nav navbar-default container-fluid">
+          <div class="list-unstyled list-group">
+              <span>
+                  <!-- Overview menu button. -->
+                  <a ui-sref="overview" class="lead list-group-item sidebar-button">
+                    Overview <br/>
+                    <span ng-show="haveSavings()">
+                      {{calculateSavings() | currency}} left 
+                    </span>
+                    <span ng-show="haveNoSavings()" class="no-savings-info">
+                      {{calculateSavings() | currency}} 
+                    </span>
+                    <span class="sr-only">(current)</span>
+                  </a>
+                  
+                  <!-- Expenses menu button. -->
+                  <a ui-sref="expenses" class="lead list-group-item sidebar-button">
+                    Expenses <br/>
+                    {{calculateExpenses() | currency}}
+                    <span class="sr-only">(current)</span>
+                  </a>
+                  
+                  <!-- Income menu button. -->
+                  <a ui-sref="incomes" class="lead list-group-item sidebar-button">
+                    Incomes <br/>
+                    {{calculateEarnings() | currency}}
+                    <span class="sr-only">(current)</span>
+                  </a>
+              </span>
+          </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="col-sm-9" ui-view>No page is shown</div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/form/form.directive.js"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+
+.sidebar-button{
+    background-color: #E9E9E9;
+}
+
+.list-item{
+    padding-left: 20px;
+}
+
+
+.list-item-title{
+    padding-left: 70px;
+}
+
+.header-buttons {
+    color: black;    
+}
+
+.no-savings-info{
+    color: red;
+}

@@ -1,0 +1,18 @@
+<div>
+    <ul class="list-unstyled">
+        <li>
+            <strong class="list-item">Date</strong>
+            <strong class="list-item-title">Expense</strong>
+        </li>
+        <!-- TODO: the filter is missing! We have to filter them to expensis.-->
+        <li ng-repeat="listItem in list | filter:{attributes: {change_type:'expense'}}">
+            <span class="list-item">
+                {{listItem.attributes.created_at | date:'yyyy-MM-dd'}}
+            </span> 
+            <span class="list-item">
+                {{listItem.attributes.value | currency}}
+            </span>
+        </li>
+    </ul>
+    <button type="button" class="btn btn-md btn-default" >Add</button>
+</div>

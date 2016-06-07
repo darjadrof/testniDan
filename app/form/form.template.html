@@ -1,0 +1,9 @@
+<div>
+    <h3> Add </h3>
+    <form ng-submit="createItem(newItem)">
+        <label>Day</label>
+        <input type="number" min="1" max="31" step="1" value="1" ng-model="dayOfMonth"></input>
+        <input type="number" ng-model="newItem.data.attributes.value"></input>
+        <button type="submit">Save</button>
+    </form>
+</div>
