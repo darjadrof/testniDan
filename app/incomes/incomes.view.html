@@ -12,6 +12,7 @@
             <span class="list-item">
                 {{listItem.attributes.value | currency}}
             </span>
+            <a href="#" ng-click="removeItem(listItem)"><span class="list-item glyphicon glyphicon-remove"></span></a>
         </li>
     </ul>          
     <button ui-sref="addincome" type="button" class="btn btn-md btn-default">

@@ -18,7 +18,7 @@
         "value": 0
       };
 
-      // Save the changes.
+      // Adding new items.
       function createItem(item){
         var resultItem = {
           "data": {
@@ -45,8 +45,8 @@
         });
       };
       
+      // Adding functions to scope.
       $scope.createItem = createItem;
-      
     }]);
     
     function convertToTwoDigits(number){

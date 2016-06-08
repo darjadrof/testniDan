@@ -46,15 +46,15 @@
 
   function App($rootScope, $http, $filter) {
     var self = $rootScope;
+    var rootUrl = "http://toshl-killer.herokuapp.com/api/v1/balance_changes";
     
     // This is the current time span that we are looking at. 
     $rootScope.selectedPeriod = new Date();
     
     // Gets the data for this time period.
     function getData(){
-      $http.get("http://toshl-killer.herokuapp.com/api/v1/balance_changes?filter[period]="+$filter('date')($rootScope.selectedPeriod, "yyyy-MM")).then(function(response){
+      $http.get(rootUrl+"?filter[period]="+$filter('date')($rootScope.selectedPeriod, "yyyy-MM")).then(function(response){
         self.list = response.data.data;
-        console.log(self.list);
       });
     };
     getData();
@@ -111,6 +111,21 @@
       $rootScope.getData();
     };
     
+    // Removing an item.
+    function removeItem(item){
+      var url = rootUrl+"/"+item.id;
+      
+      $http.delete(url).then(function (response) {
+        // Success    
+         $rootScope.getData();
+      }, function (response) {
+        // Error
+        alert("Failed to remove item!");
+      });
+
+    };
+      
+    
     // Adding functions to the scope.   
     $rootScope.calculateEarnings = calculateEarnings;
     $rootScope.calculateExpenses = calculateExpenses;
@@ -120,5 +135,6 @@
     $rootScope.getDataPreviousPeriod = getDataPreviousPeriod;
     $rootScope.getDataNextPeriod = getDataNextPeriod;
     $rootScope.getData = getData;
+    $rootScope.removeItem = removeItem;
   }
 })();

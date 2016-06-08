@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toshl Killer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="app/style.css">
   </head>
   <body>
     <nav class="navbar navbar-dark bg-inverse m-b">
       <a class="navbar-brand" href="#">Toshl Killer</a>
       <center>
-        <button ng-click="getDataPreviousPeriod()" type="button" class="btn btn-sm header-buttons"> < </button>
+        <button ng-click="getDataPreviousPeriod()" type="button" class="btn btn-sm glyphicon glyphicon-chevron-left header-buttons"> </button>
         <strong>{{selectedPeriod | date: 'MMMM yyyy'}}</strong>
-        <button ng-click="getDataNextPeriod()" type="button" class="btn btn-sm header-buttons"> > </button>
+        <button ng-click="getDataNextPeriod()" type="button" class="btn btn-sm glyphicon glyphicon-chevron-right header-buttons"> </button>
       </center>
     </nav>
     
