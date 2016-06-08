@@ -10,46 +10,46 @@
         controller: "CrudFormController"
       };
     })
-    .controller("CrudFormController", ["$scope", "$http", "$filter", function($scope, $http, $filter){
-       
-      // Setting the default day to today.
-      $scope.dayOfMonth = parseInt($filter('date')(new Date(), "dd"));
-      
-      // The date attribute will automatically update. 
-      function updateEntryDate(){
-        return $filter('date')(new Date(), "yyyy-MM")+"-"+$scope.dayOfMonth;
+    .controller("CrudFormController", ["$scope", "$http", "$filter", "$location", function($scope, $http, $filter, $location){
+      // Setting the default data for creating new items.
+      $scope.crudData = {
+        "dayOfMonth": parseInt($filter('date')(new Date(), "dd")),
+        "type": null,
+        "value": 0
       };
-      $scope.updateEntryDate = updateEntryDate;
-      
-      // The result will be saved here.
-      $scope.newItem = {
-        "data": {
-          "attributes": {
-            "value": 10,
-            "change_type": "income",
-            "entry_date": $scope.updateEntryDate()
-          }
-        }
-      };
-     
+
+      // Save the changes.
       function createItem(item){
-        console.log(item);
-        /*$http({
+        var resultItem = {
+          "data": {
+            "attributes": {
+              "value": item.value,
+              "change_type": item.type,
+              "entry_date": $filter('date')($scope.selectedPeriod, "yyyy-MM")+"-"+convertToTwoDigits(item.dayOfMonth)
+            }
+          }
+        };
+        
+        $http({
             url: 'http://toshl-killer.herokuapp.com/api/v1/balance_changes',
             method: "POST",
-            data: $scope.newItem
+            data: resultItem
         })
         .then(function(response) {
-          console.log(response);
-                // success
+          // success
+          $location.path("overview");   
         }, 
         function(response) { // optional
-                // failed
-                console.log(response);
-        });*/
+          // failed
+          alert("Failed to save data!");
+        });
       };
       
       $scope.createItem = createItem;
       
     }]);
+    
+    function convertToTwoDigits(number){
+       return (number.toString().length < 2) ? "0"+number : number;
+    }
 })();

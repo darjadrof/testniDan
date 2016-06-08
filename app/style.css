@@ -1,21 +1,31 @@
 
+/* Sidebar. */
 .sidebar-button{
     background-color: #E9E9E9;
 }
+.no-savings-info{
+    color: red;
+}
 
+/* List with expenses and incomes.  */
 .list-item{
     padding-left: 20px;
 }
-
-
 .list-item-title{
     padding-left: 70px;
 }
 
+/* Header navigation menu. */
 .header-buttons {
     color: black;    
 }
 
-.no-savings-info{
-    color: red;
+/* Crud form - Removes the arrows from the value input. */
+.value-input::-webkit-outer-spin-button,
+.value-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.value-input {
+    -moz-appearance: textfield;
 }

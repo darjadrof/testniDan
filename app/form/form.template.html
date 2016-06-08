@@ -1,9 +1,11 @@
 <div>
-    <h3> Add </h3>
-    <form ng-submit="createItem(newItem)">
+    <form ng-submit="createItem(crudData);getData()">
         <label>Day</label>
-        <input type="number" min="1" max="31" step="1" value="1" ng-model="dayOfMonth"></input>
-        <input type="number" ng-model="newItem.data.attributes.value"></input>
-        <button type="submit">Save</button>
+        <input type="number" min="1" max="31" step="1" value="1" ng-model="crudData.dayOfMonth"></input>
+        <input class="value-input" type="number" step="any" ng-model="crudData.value"></input> $
+        <button type="submit">
+            Save
+        </button>
     </form>
 </div>
+

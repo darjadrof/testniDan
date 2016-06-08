@@ -25,10 +25,21 @@
       url: '/',
       templateUrl: 'app/expenses/expenses.view.html'
     };
+    var addIncomeState = {
+      url: '/',
+      templateUrl: 'app/incomes/incomes-add.view.html'
+    };
+    var addExpenseState = {
+      url: '/',
+      templateUrl: 'app/expenses/expenses-add.view.html'
+    };
+
 
     $stateProvider.state('overview', homeState);
     $stateProvider.state('expenses', expenseState);
     $stateProvider.state('incomes', incomeState);
+    $stateProvider.state('addincome', addIncomeState);
+    $stateProvider.state('addexpense', addExpenseState);
 
     $urlRouterProvider.otherwise('/');
   }
@@ -43,6 +54,7 @@
     function getData(){
       $http.get("http://toshl-killer.herokuapp.com/api/v1/balance_changes?filter[period]="+$filter('date')($rootScope.selectedPeriod, "yyyy-MM")).then(function(response){
         self.list = response.data.data;
+        console.log(self.list);
       });
     };
     getData();
